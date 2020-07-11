@@ -22,6 +22,6 @@ import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 )
 @FacesConfig
 @ApplicationScoped
-public class ApplicationConfig1 {
+public class ApplicationConfig {
     
 }
