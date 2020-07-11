@@ -1,6 +1,11 @@
-package com.avbravo.avbravoadmintemplate.security;
+package com.avbravo.avbravoadmintemplate.config;
 
 import static com.avbravo.avbravoadmintemplate.util.Utils.addDetailMessage;
+import com.avbravo.jmoordb.configuration.JmoordbConnection;
+import com.avbravo.jmoordb.mongodb.history.entity.Configuracion;
+import com.avbravo.jmoordb.mongodb.history.repository.AccessInfoRepository;
+import com.avbravo.jmoordb.services.AccessInfoServices;
+import com.avbravo.jmoordbutils.JmoordbResourcesFiles;
 import com.github.adminfaces.template.config.AdminConfig;
 import com.github.adminfaces.template.session.AdminSession;
 import org.omnifaces.util.Faces;
@@ -17,11 +22,12 @@ import javax.security.enterprise.SecurityContext;
 import javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
 
 import static com.github.adminfaces.template.util.Assert.has;
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 
 @Named
 @SessionScoped
@@ -46,6 +52,39 @@ public class LogonMB extends AdminSession implements Serializable {
 
     private boolean remember;
 
+    /**
+     * 
+     */
+     Configuracion configuracion = new Configuracion();
+    //Acceso
+    @Inject
+    AccessInfoServices accessInfoServices;
+    @Inject
+    AccessInfoRepository accessInfoRepository;
+    @Inject
+    JmoordbResourcesFiles rf;
+    
+     Boolean loggedIn = false;
+
+    
+    
+     @PostConstruct
+    public void init() {
+        loggedIn = false;
+      
+//        configuracion = new Configuracion();
+
+        //Configuracion de la base de datos
+//        JmoordbConnection jmc = new JmoordbConnection.Builder()
+//                .withSecurity(false)
+//                .withDatabase("elsa")
+//                .withHost("")
+//                .withPort(0)
+//                .withUsername("")
+//                .withPassword("")
+//                .build();
+    }
+    
     public void autoLogin() throws IOException {
         String emailCookie = Faces.getRequestCookie("admin-email");
         String passCookie = Faces.getRequestCookie("admin-pass");

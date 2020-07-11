@@ -1,4 +1,4 @@
-package com.avbravo.avbravoadmintemplate.security;
+package com.avbravo.avbravoadmintemplate.config;
 
 import org.omnifaces.util.Faces;
 
