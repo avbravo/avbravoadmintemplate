@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="#{layoutMB.template}">
+
+    <ui:param name="renderBreadCrumb" value="false"/>
+    <ui:define name="title">
+        <h2 class="align-center">
+
+            <span class="text-aqua"> <i>   <p:outputLabel value="#{msg['application.welcome']}" /></i></span>
+            <br/>
+            <small>    <p:outputLabel value="#{msg['application.welcome2']}" />
+                <br/>
+                <p:outputLabel value="#{msg['application.welcome3']}" />
+            </small>
+
+
+        </h2>
+
+    </ui:define>
+
+
+</ui:composition>

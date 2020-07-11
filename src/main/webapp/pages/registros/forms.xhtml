@@ -1,0 +1,168 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:adm="http://github.com/adminfaces"
+                template="#{layoutMB.template}">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="flat" value="#{layoutMB.flat}" converter="javax.faces.Boolean"/>
+        </f:metadata>
+
+        <style type="text/css">
+            .ui-grid-row .ui-grid-col-2,
+            .ui-grid-row .ui-grid-col-10 {
+                padding: 0.5em 0;
+                margin-left: 10px;
+            }
+
+            .ui-g-12, .ui-sm-12 {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .ui-datagrid-column .ui-panel.ui-widget-content {
+                border: none;
+            }
+
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">
+        Forms
+    </ui:define>
+
+    <ui:define name="description">
+        Example of form controls
+    </ui:define>
+
+    <ui:define name="body">
+        <adm:breadcrumb title="Forms"/>
+        <h:form>
+            <div>
+                <p:tooltip for="flat-switch" escape="false" position="top" value="Turns flat borders on, just add &lt;code&gt;ui-flat&lt;/code&gt; to a parent div."/>
+                <p:outputLabel value="Flat borders?" for="flat-switch"/>
+                <p:inputSwitch id="flat-switch" value="#{layoutMB.flat}">
+                    <p:ajax update="@form @(.ui-tabs)"/>
+                </p:inputSwitch>
+            </div>
+            <p:spacer height="15px"/>
+            <div class="ui-fluid #{layoutMB.flat ? 'ui-flat':''}">
+                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                             layout="grid" styleClass="ui-fluid card">
+                    <p:outputLabel for="input" value="Input"/>
+                    <p:inputText id="input"/>
+
+                    <p:outputLabel for="area" value="Textarea"/>
+                    <p:inputTextarea id="area"/>
+
+                    <p:outputLabel for="calendar" value="Calendar"/>
+                    <p:calendar id="calendar" showOn="button"/>
+
+                
+
+                    <p:outputLabel for="mask" value="Mask"/>
+                    <p:inputMask id="mask" mask="99/99/9999"/>
+
+                    <p:outputLabel for="pwd" value="Password"/>
+                    <p:password id="pwd"/>
+
+                    <p:outputLabel for="keyboard" value="Keyboard"/>
+                    <p:keyboard id="keyboard"/>
+
+                    <p:outputLabel for="onemenu" value="OneMenu"/>
+                    <p:selectOneMenu id="onemenu">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One"/>
+                        <f:selectItem itemLabel="PS4" itemValue="PS4"/>
+                        <f:selectItem itemLabel="Wii U" itemValue="Wii U"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="spinner" value="Spinner"/>
+                    <p:spinner id="spinner"/>
+
+                    <p:outputLabel for="slider" value="Slider"/>
+                    <p:outputPanel>
+                        <p:inputText id="slider"/>
+                        <p:slider for="slider"/>
+                    </p:outputPanel>
+
+                  
+
+                  
+                    <p:outputLabel for="btn" value="Button"/>
+                    <p:commandButton id="btn" value="Edit" icon="fa fa-edit" type="button" styleClass="btn-primary"/>
+
+                
+                    <p:outputLabel for="chkmenu" value="Checkbox Menu"/>
+                    <p:selectCheckboxMenu id="chkmenu" label="Cities">
+                        <f:selectItems value="#{checkboxMB.cities}"/>
+                    </p:selectCheckboxMenu>
+
+                    <p:outputLabel for="chkmenu-multiple" value="Checkbox Menu Multiple"/>
+                    <p:selectCheckboxMenu id="chkmenu-multiple" label="Cities"
+                                          multiple="true" filter="true" filterMatchMode="startsWith" >
+                        <f:selectItems value="#{checkboxMB.cities}"/>
+                    </p:selectCheckboxMenu>
+
+                    <p:outputLabel for="booleanBtn" value="Boolean Button"/>
+                    <p:selectBooleanButton id="booleanBtn" onLabel="Yes" offLabel="No" onIcon="ui-icon-check"
+                                           offIcon="ui-icon-close"/>
+
+                    <p:outputLabel for="oneBtn" value="OneButton"/>
+                    <p:selectOneButton id="oneBtn">
+                        <f:selectItem itemLabel="XB1" itemValue="XB1"/>
+                        <f:selectItem itemLabel="PS4" itemValue="PS4"/>
+                    </p:selectOneButton>
+
+                    <p:outputLabel for="manyBtn" value="Many Button"/>
+                    <p:selectManyButton id="manyBtn">
+                        <f:selectItem itemLabel="Spark" itemValue="Spark"/>
+                        <f:selectItem itemLabel="Ronin" itemValue="Ronin"/>
+                        <f:selectItem itemLabel="Rio" itemValue="Rio"/>
+                    </p:selectManyButton>
+
+                    <p:outputLabel for="menuBtn" value="Menu Button"/>
+                    <p:menuButton value="layout mode" id="menuBtn" styleClass="btn-primary">
+                        <p:menuitem value="Vertical" icon="fa fa-list-ul"/>
+                        <p:menuitem value="Horizontal" icon="fa fa-credit-card"/>
+                    </p:menuButton>
+
+                    <p:outputLabel for="listbox" value="Listbox"/>
+                    <p:selectOneListbox id="listbox">
+                        <f:selectItem itemLabel="Sentinel" itemValue="Sentinel"/>
+                        <f:selectItem itemLabel="Spark" itemValue="Spark"/>
+                        <f:selectItem itemLabel="Ronin" itemValue="Ronin"/>
+                        <f:selectItem itemLabel="Rio" itemValue="Rio"/>
+                        <f:selectItem itemLabel="Primus" itemValue="Primus"/>
+                    </p:selectOneListbox>
+
+                   
+                   
+                    <p:commandButton value="Action" id="cmdBtn" styleClass="btn-primary"/>
+                    <p:outputLabel for="cmdBtnFlat" value="Material flat button"/>
+                    <p:commandButton value="Action" id="cmdBtnFlat" styleClass="btn-primary btn-material"/>
+                </p:panelGrid>
+
+                <p:commandButton id="dialog" value="Dialog" icon="ui-icon-extlink" styleClass="btn-success"
+                                 type="button" onclick="PF('dlg').show()" style="margin-top:20px;display:block"/>
+              
+                
+              
+
+              
+               
+
+
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="code">
+      
+    </ui:define>
+</ui:composition>

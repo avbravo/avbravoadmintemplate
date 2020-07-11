@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jmoordbjsf="http://jmoordbjsf.com/taglib">
+    <h:head> 
+        <title>#{msg['application.title']}</title>
+        <meta name="author" content="Aristides Villarreal"></meta>
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+        <f:facet name="first">
+            <f:view locale="#{jmoordbLanguajes.locale !=null?jmoordbLanguajes.locale:'es'}"></f:view>
+            <f:loadBundle basename="com.properties.messages" var="msg" />
+            <f:loadBundle basename="com.jmoordbutils.properties.application" var="app" />
+
+        </f:facet>
+        <meta http-equiv="refresh" content="15;url=./login.xhtml"/>
+
+    </h:head>
+    <h:body style="padding-top: 60px; background-color: #000000">
+
+
+
+        <h:form styleClass="form-signin" prependId="false" id="form">
+
+
+
+            <h2 class="form-signin-heading"></h2>
+
+
+
+            <h1 style="color:white">Sesion expirada</h1>
+
+            <p style="color:white"> Para proteger su seguridad </p>
+            <p>Sera redireccionado a la pagina de autentificación</p>
+
+
+            <p style="color:white"> Espere unos segundos...</p>
+
+            <a href="./login.xhtml"> o de Clic aqui para ir al Login</a>
+        </h:form>
+
+    </h:body>
+</html>
