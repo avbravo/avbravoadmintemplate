@@ -5,16 +5,11 @@
  */
 package com.avbravo.avbravoadmintemplate.config;
 
-import com.avbravo.jmoordb.configuration.JmoordbContext;
-import com.avbravo.jmoordbutils.JsfUtil;
 
 import com.avbravo.jmoordbutils.JmoordbResourcesFiles;
-import com.avbravo.sigeclclient.entity.User;
-import com.avbravo.sigeclclient.services.UserServices;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.security.enterprise.credential.Credential;
