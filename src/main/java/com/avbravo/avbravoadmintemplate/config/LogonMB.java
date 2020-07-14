@@ -2,6 +2,7 @@ package com.avbravo.avbravoadmintemplate.config;
 
 import static com.avbravo.avbravoadmintemplate.util.Utils.addDetailMessage;
 import com.avbravo.jmoordb.configuration.JmoordbConnection;
+import com.avbravo.jmoordb.configuration.JmoordbContext;
 import com.avbravo.jmoordb.mongodb.history.entity.Configuracion;
 import com.avbravo.jmoordb.mongodb.history.repository.AccessInfoRepository;
 import com.avbravo.jmoordb.services.AccessInfoServices;
@@ -51,6 +52,12 @@ public class LogonMB extends AdminSession implements Serializable {
     private String email;
 
     private boolean remember;
+    
+    //Remueva para el usuario logeado
+    //private User user = new User();
+    
+    //Remueva para el rol o profile
+    //private Rol rol =  new Rol();
 
     /**
      * 
@@ -96,6 +103,8 @@ public class LogonMB extends AdminSession implements Serializable {
     }
 
     public void login() throws IOException {
+     // Aqui coloque el rol o profile que selecciona el usuario para logearse
+         //   JmoordbContext.put("jmoordb_rol", rol);
         switch (continueAuthentication()) {
             case SEND_CONTINUE:
                 facesContext.responseComplete();
@@ -107,6 +116,10 @@ public class LogonMB extends AdminSession implements Serializable {
             case SUCCESS:
                 externalContext.getFlash().setKeepMessages(true);
                 addDetailMessage("Logged in successfully as <b>" + email + "</b>");
+                
+                //Remueva para obtener el usuario logeado
+               // user= (User) JmoordbContext.get("jmoordb_user");
+                
                 if (remember) {
                     storeCookieCredentials(email, password);
                 }

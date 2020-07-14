@@ -24,11 +24,7 @@
             <artifactId>javax.faces</artifactId>
             <version>2.3.9</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.avbravo</groupId>
-            <artifactId>jmoordb</artifactId>
-            <version>0.59</version>
-        </dependency>
+      
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>

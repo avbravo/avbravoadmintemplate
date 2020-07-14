@@ -7,6 +7,7 @@ package com.avbravo.avbravoadmintemplate.config;
 
 
 import com.avbravo.jmoordbutils.JmoordbResourcesFiles;
+import com.avbravo.jmoordbutils.JsfUtil;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -51,7 +52,7 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
 //        if (!isValidUser(username, password)) {
 //            return CredentialValidationResult.NOT_VALIDATED_RESULT;
 //        }
-//        return new CredentialValidationResult(rolValue, new HashSet<>(Arrays.asList("LOGIN")));
+//        return new CredentialValidationResult(username, new HashSet<>(Arrays.asList(rolValue)));
 
     }
 
@@ -64,7 +65,7 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
 //            }
 //            User user = new User();
 //            user.setUsername(username);
-//
+////Obtiene el rol del contexto generalmente se pssa desde  LogonMB.java
 ////            Role role = (Role) JmoordbContext.get("jmoordb_rol");
 ////Asigna el rol del user
 ////            this.rolValue = role.getIdrole();
@@ -117,22 +118,22 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
 //
 //    // </editor-fold>
 //    // <editor-fold defaultstate="collapsed" desc="Boolean isValidData(String username, String password)">
-//    private Boolean isValidData(String username, String password) {
-//        try {
-//            if (username.isEmpty() || username.equals("") || username == null) {
-//                JsfUtil.successMessage(rf.getAppMessage("warning.usernameisempty"));
-//                return false;
-//            }
-//            if (password.isEmpty() || password.equals("") || password == null) {
-//                JsfUtil.successMessage(rf.getAppMessage("warning.passwordisempty"));
-//                return false;
-//            }
-//            return true;
-//        } catch (Exception e) {
-//              JsfUtil.successMessage("isValidData() "+e.getLocalizedMessage());
-//        }
-//
-//        return false;
-//    }
+    private Boolean isValidData(String username, String password) {
+        try {
+            if (username.isEmpty() || username.equals("") || username == null) {
+                JsfUtil.successMessage(rf.getAppMessage("warning.usernameisempty"));
+                return false;
+            }
+            if (password.isEmpty() || password.equals("") || password == null) {
+                JsfUtil.successMessage(rf.getAppMessage("warning.passwordisempty"));
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+              JsfUtil.successMessage("isValidData() "+e.getLocalizedMessage());
+        }
+
+        return false;
+    }
     // </editor-fold>
 }
