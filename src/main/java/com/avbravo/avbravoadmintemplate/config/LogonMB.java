@@ -57,7 +57,7 @@ public class LogonMB extends AdminSession implements Serializable {
     //private User user = new User();
     
     //Remueva para el rol o profile
-    //private Rol rol =  new Rol();
+    //private Role role =  new Role();
 
     /**
      * 
@@ -104,7 +104,7 @@ public class LogonMB extends AdminSession implements Serializable {
 
     public void login() throws IOException {
      // Aqui coloque el rol o profile que selecciona el usuario para logearse
-         //   JmoordbContext.put("jmoordb_rol", rol);
+         //   JmoordbContext.put("jmoordb_rol", role);
         switch (continueAuthentication()) {
             case SEND_CONTINUE:
                 facesContext.responseComplete();
